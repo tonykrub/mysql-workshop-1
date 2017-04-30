@@ -1,0 +1,18 @@
+Exercise 1
+Connect to the MySQL instance within your Workspace using your Cloud9 username
+
+answer
+tonykrub:~/workspace (master) $ mysql -u tonykrub
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 53
+Server version: 5.5.49-0ubuntu0.14.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2016, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql>
