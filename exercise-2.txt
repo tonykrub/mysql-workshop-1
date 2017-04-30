@@ -1,0 +1,10 @@
+Exercise 2
+- Create a database named decodemtl_test within MySQL
+- Create a database named decodemtl_addressbook within MySQL
+
+answer 2.1
+mysql> create database decodemtl_test;
+Query OK, 1 row affected (0.01 sec)
+
+mysql>
+
