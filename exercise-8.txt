@@ -12,3 +12,131 @@ Entry.id is a primary auto-increment key
 Entry.type is an ENUM column permitting home, work and other
 
 Entry.subtype is an ENUM column permitting phone, address and email
+
+Answer
+8.1
+mysql> drop table Account;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create table Account(id INT, email VARCHAR(255), pasword VARCHAR(40), createdOn DATETIME, modifiedOn DATETIME);
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> show tables;
++---------------------------------+
+| Tables_in_decodemtl_addressbook |
++---------------------------------+
+| ACCOUNT                         |
+| Account                         |
+| Entry                           |
+| hatching_chick                  |
++---------------------------------+
+4 rows in set (0.00 sec)
+
+
+Answer 8.2
+mysql>  create table AddressBook(id INT, accountId INT, name VARCHAR(255), createdOn DATETIME, modifiedOn DATETIME);
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> show tables;
++---------------------------------+
+| Tables_in_decodemtl_addressbook |
++---------------------------------+
+| ACCOUNT                         |
+| Account                         |
+| AddressBook                     |
+| Entry                           |
+| hatching_chick                  |
++---------------------------------+
+5 rows in set (0.00 sec) 
+
+
+
+answer 8.3 - 8.5
+mysql> create table Entry(id INT AUTO_INCREMENT PRIMARY KEY, addressBookId INT, firstName varchar(255), lastName varchar(255), birthday DATETIME, type enum('home', 'work', 'other'), subtype enum('phone', 'address', 'email'));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> show tables;
++---------------------------------+
+| Tables_in_decodemtl_addressbook |
++---------------------------------+
+| ACCOUNT                         |
+| Account                         |
+| AddressBook                     |
+| Entry                           |
+| hatching_chick                  |
++---------------------------------+
+5 rows in set (0.01 sec)
+
+mysql> describe Account;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| id         | int(11)      | YES  |     | NULL    |       |
+| email      | varchar(255) | YES  |     | NULL    |       |
+| password   | varchar(40)  | YES  |     | NULL    |       |
+| createdOn  | datetime     | YES  |     | NULL    |       |
+| modifiedOn | datetime     | YES  |     | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> describe Addressbook;
+ERROR 1146 (42S02): Table 'decodemtl_addressbook.Addressbook' doesn't exist
+mysql> describe AddressBook;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| id         | int(11)      | YES  |     | NULL    |       |
+| accountId  | int(11)      | YES  |     | NULL    |       |
+| name       | varchar(255) | YES  |     | NULL    |       |
+| createdOn  | datetime     | YES  |     | NULL    |       |
+| modifiedOn | datetime     | YES  |     | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> describe Entry;
++---------------+---------------------------------+------+-----+---------+----------------+
+| Field         | Type                            | Null | Key | Default | Extra          |
++---------------+---------------------------------+------+-----+---------+----------------+
+| id            | int(11)                         | NO   | PRI | NULL    | auto_increment |
+| addressBookId | int(11)                         | YES  |     | NULL    |                |
+| firstName     | varchar(255)                    | YES  |     | NULL    |                |
+| lastName      | varchar(255)                    | YES  |     | NULL    |                |
+| birthday      | datetime                        | YES  |     | NULL    |                |
+| type          | enum('home','work','other')     | YES  |     | NULL    |                |
+| subtype       | enum('phone','address','email') | YES  |     | NULL    |                |
++---------------+---------------------------------+------+-----+---------+----------------+
+7 rows in set (0.00 sec)
+
+mysql> Alter Table Account modify column id INT AUTO_INCREMENT PRIMARY KEY;   
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe Account;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| id         | int(11)      | NO   | PRI | NULL    | auto_increment |
+| email      | varchar(255) | YES  |     | NULL    |                |
+| password   | varchar(40)  | YES  |     | NULL    |                |
+| createdOn  | datetime     | YES  |     | NULL    |                |
+| modifiedOn | datetime     | YES  |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> Alter AddressBook modify column id INT AUTO_INCREMENT PRIMARY KEY;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AddressBook modify column id INT AUTO_INCREMENT PRIMARY KEY' at line 1
+mysql> Alter Table AddressBook modify column id INT AUTO_INCREMENT PRIMARY KEY;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe AddressBook;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| id         | int(11)      | NO   | PRI | NULL    | auto_increment |
+| accountId  | int(11)      | YES  |     | NULL    |                |
+| name       | varchar(255) | YES  |     | NULL    |                |
+| createdOn  | datetime     | YES  |     | NULL    |                |
+| modifiedOn | datetime     | YES  |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.01 sec)
