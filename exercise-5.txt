@@ -7,3 +7,43 @@ Create table AddressBook for database decodemtl_addressbook
 Create table Entry for database decodemtl_addressbook
 
 Create table Test for database decodemtl_addressbook
+
+answer 
+5.1 
+mysql> use decodemtl_addressbook
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++---------------------------------+
+| Tables_in_decodemtl_addressbook |
++---------------------------------+
+| ACCOUNT                         |
+| Account                         |
+| AddressBook                     |
+| Entry                           |
+| hatching_chick                  |
++---------------------------------+
+5 rows in set (0.00 sec)
+
+
+answer 5.2
+mysql> show tables;
++---------------------------------+
+| Tables_in_decodemtl_addressbook |
++---------------------------------+
+| ACCOUNT                         |
+| Account                         |
+| AddressBook                     |
+| Entry                           |
+| hatching_chick                  |
++---------------------------------+
+5 rows in set (0.00 sec)
+
+mysql> create table Test;
+ERROR 1113 (42000): A table must have at least 1 column
+mysql> create table Test (test int);
+Query OK, 0 rows affected (0.01 sec)
+
+
